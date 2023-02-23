@@ -17,7 +17,7 @@ import os
 """ SUMMARY
 
 This script takes voltage, temperature and magnetic field data and creates 
-and overlay of sheet resistance R vs magnet field B for a series of constant 
+an overlay of sheet resistance R vs magnet field B for a series of constant 
 temperature magnetic field sweeps through a superconducting sample. 
 
 """
