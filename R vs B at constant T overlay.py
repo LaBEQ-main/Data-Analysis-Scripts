@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 # Authors - Frank Duffy, LaBEQ / Sardashti Research Group, Clemson University
-#
-# Distributed under the terms of the BSD license.
-#
-# The full license is in the file LICENCE, distributed with this software.
-# -----------------------------------------------------------------------------
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
