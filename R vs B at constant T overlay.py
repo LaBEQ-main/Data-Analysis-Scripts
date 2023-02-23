@@ -23,20 +23,20 @@ for comparison with the set points.
 ############## USER INPUT START ##############################################
 ##############################################################################
 
-# in the event that you only wish to plot a subset of the temperature data, 
-# set gather_templist_from_data to false and populate the variable templist
-# with the desired values.
+# gather_temp_list_from_data will create the list of temperature steps to plot
+# automatically given your data set. Setting false allows you to select one or 
+# more temp data to plot by populating templist with your desired temps.
 gather_templist_from_data = True
 
 # list the temperatures you would like removed from the plot if you 
-# chose gather_templist_from_data = True.
-temp_remove_list = [1.5, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75]
+# chose gather_templist_from_data = True. Outliers or bad data, etc.
+temp_remove_list = []
 
 # the list of temperatures to plot if # chose gather_templist_from_data = False.
 templist = [1.75, 2.0, 2.25, 2.5, 2.75, 3.0]
 
 # enter the file which contains the data with two backslashes "\\" in place of "/" like below.
-file = "C:\\Users\\fduff\\OneDrive\\Documents\\Clemson University\\LabEQ\\Data Analysis\\NCSU\\2022_11_11_NCSU_A093_A069_A081\\004\\004_Data.txt"
+file = "C:\\Users\\fduff\\OneDrive\\Documents\\Clemson University\\LabEQ\\Data Analysis\\2DBT testing\\2023_02_15_A064_6x20umBars_before_anneal\\033\\033_Data.txt"
 
 # enter the excitation current for this experiment in units of Amps
 excurr = 0.0001
