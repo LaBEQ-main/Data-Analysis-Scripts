@@ -18,14 +18,16 @@ import os
 
 This script takes voltage, temperature and magnetic field data and creates 
 an overlay of sheet resistance R vs magnet field B for a series of constant 
-temperature magnetic field sweeps through a superconducting sample. 
+temperature magnetic field sweeps through a superconducting sample. The mean
+temperature at each temperature step is calculated and printed to the screen 
+for comparison with the set points.
 
 """
 ##############################################################################
 ############## USER INPUT START ##############################################
 ##############################################################################
 
-# in the event that you only wish to plot a subset of the temperature data list, 
+# in the event that you only wish to plot a subset of the temperature data, 
 # set gather_templist_from_data to false and populate the variable templist
 # with the desired values.
 gather_templist_from_data = True
@@ -40,7 +42,7 @@ templist = [1.75, 2.0, 2.25, 2.5, 2.75, 3.0]
 # enter the file which contains the data with two backslashes "\\" in place of "/" like below.
 file = "C:\\Users\\fduff\\OneDrive\\Documents\\Clemson University\\LabEQ\\Data Analysis\\NCSU\\2022_11_11_NCSU_A093_A069_A081\\004\\004_Data.txt"
 
-# enter the excitation current for this experiment
+# enter the excitation current for this experiment in units of Amps
 excurr = 0.0001
 
 # enter the column names for the relevant data
@@ -48,6 +50,12 @@ voltage_column = "NF res"
 temp_setpoint_column = "temp setpoint (K)"
 temp_measured_column = "probe temp (K)"
 field_measured_column = "field (T)"
+
+# resistance conversion factor
+conversion = 10**-9
+
+# y axis label
+y_label = "R (nΩ/□)"
 
 # choose your graph title and field axis range
 plt.title("A093 R vs B", fontsize = 20)
@@ -76,13 +84,13 @@ for temp in templist:
     x = ds[field_measured_column]
     y = ds[voltage_column]
     lbl = str(temp)+"K"
-    plt.plot(x, y * excurr * np.log(2), label = lbl)
+    plt.plot(x, y * excurr * np.log(2) / conversion, label = lbl)
     print(f"mean temp: " + str(ds[temp_measured_column].mean()) + ", datapoints: " + str(len(ds)))
 
 plt.xlabel("B (T)", fontsize = 18)
 plt.xticks(fontsize = 14)
 
-plt.ylabel("R (Ω/□)", fontsize = 18)
+plt.ylabel(y_label, fontsize = 18)
 plt.yticks(fontsize = 14)
 
 plt.legend(loc='lower left')
